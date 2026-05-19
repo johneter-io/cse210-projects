@@ -1,10 +1,12 @@
 // ---------------------------- W02 Project: Journal Program ----------------------------
 // ---------------------------- Student: John Peter Joseph ----------------------------
+// ---------------------------- Course: CSE 210: Programming with Classes ----------------------------
 
+// 1. Add two more questions for each journal entry, with a focus on creativity.
+// 2. Implementing robust file error handling during loading operations.
+// 3. Displaying the total number of log entries.
 
-// 1. Add two more questions for each journal entry, with a focus on creativity
-// 2. Implementing robust file error handling during loading operations
-// 3. Displaying the total number of log entries
+// I made changes specifically to the “Entry” class and the program code.
 
 using System;
 using System.IO;
@@ -39,7 +41,7 @@ class Program
             Console.WriteLine("4. Load");
             Console.WriteLine("5. Quit");
 
-            Console.Write("Your choice?: ");
+            Console.Write("Your choice: ");
             choice = int.Parse(Console.ReadLine());
 
             if (choice == 1)
@@ -83,7 +85,7 @@ class Program
             }
             else if (choice == 3)
             {
-                Console.Write("What is the filename? ");
+                Console.Write("> What is the filename? ");
                 string file = Console.ReadLine();
                 journal.SaveToFile(file);
             }
@@ -97,6 +99,7 @@ class Program
 
             else if (choice == 5)
             {
+                Console.WriteLine("");
                 Console.WriteLine($"Goodbye {name}!");
                 Console.WriteLine("I hope to see you again!");
             }

@@ -10,10 +10,11 @@ public class Entry
 
     public void Display()
     {
-        Console.WriteLine($"Date: {_date}");
+        Console.WriteLine($"> Date: {_date}");
         Console.WriteLine($"Question: {_promptText}");
         Console.WriteLine($"Your answer: {_entryText}");
-        Console.WriteLine($"I feel: {_stateOfMind}");
+        Console.WriteLine("========================================");
+        Console.WriteLine($"How I feel today: {_stateOfMind}");
         Console.WriteLine($"Reason: {_reason}");
         Console.WriteLine();
 

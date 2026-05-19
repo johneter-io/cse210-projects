@@ -6,7 +6,6 @@ public class PromptGenerator
         "> What was the best part of your day?",
         "> How did you see the hand of the Lord in your life today?",
         "> If you had one thing you could do over today, what would it be?",
-        "> What made you smile today?",
         "> What challenge did you overcome today?",
         "> What are you grateful for today?",
         "> What did you learn today?",

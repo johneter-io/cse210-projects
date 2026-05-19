@@ -35,6 +35,8 @@ public class Journal
             {
                 writer.WriteLine($"{entry._date}|{entry._promptText}|{entry._entryText}|{entry._stateOfMind}|{entry._reason}");
             }
+
+            Console.WriteLine("Your file has been successfully saved.");
         }
     }
 
@@ -66,7 +68,6 @@ public class Journal
         else
         {
             Console.WriteLine("Sorry, file not found!");
-            Console.WriteLine("Please enter the “3” number if you would like to save your file!");
         }
     }
 }
