@@ -5,10 +5,12 @@ class ListingActivity : Activity
 {
     private int _count;
     private List<string> _prompts;
+    private Random _random;
 
     public ListingActivity() : base("Listing", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.")
     {
         _count = 0;
+        _random = new Random();
 
         _prompts = new List<string>
         {
@@ -22,14 +24,22 @@ class ListingActivity : Activity
 
     private string GetRandomPrompt()
     {
-
+        return _prompts[_random.Next(_prompts.Count)];
     }
 
     private List<string> GetListFromUser()
     {
- 
+        List<string> items = new List<string>();
+        DateTime endTime = DateTime.Now.AddSeconds(GetDuration());
+
+        while (DateTime.Now < endTime)
         {
-        
+            Console.Write("> ");
+            string item = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(item))
+            {
+                items.Add(item);
+            }
         }
 
         return items;
@@ -39,5 +49,18 @@ class ListingActivity : Activity
     {
         DisplayStartingMessage();
 
+        DateTime endTime = DateTime.Now.AddSeconds(GetDuration());
+
+        Console.WriteLine("\nList as many responses as you can to the following prompt:");
+        Console.WriteLine($" -- {GetRandomPrompt()} -- ");
+        Console.Write("You may begin in: ");
+        ShowCountDown(5);
+        Console.WriteLine("\n");
+
+        List<string> items = GetListFromUser();
+        _count = items.Count;
+
+        Console.WriteLine($"\nYou listed {_count} items!");
+        DisplayEndingMessage();
     }
 }

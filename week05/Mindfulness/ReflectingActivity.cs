@@ -5,9 +5,12 @@ class ReflectingActivity : Activity
 {
     private List<string> _prompts;
     private List<string> _questions;
+    private Random _random;
 
     public ReflectingActivity() : base("Reflecting", "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.")
     {
+        _random = new Random();
+
         _prompts = new List<string>
         {
             "Think of a time when you stood up for someone else.",
@@ -32,47 +35,43 @@ class ReflectingActivity : Activity
 
     private string GetRandomPrompt()
     {
-        Random random = new Random();
-        int index = random.Next(_prompts.Count);
-        return _prompts[index];
+        return _prompts[_random.Next(_prompts.Count)];
     }
 
     private string GetRandomQuestion()
     {
-        Random random = new Random();
-        int index = random.Next(_questions.Count);
-        return _questions[index];
+        return _questions[_random.Next(_questions.Count)];
     }
 
     private void DisplayPrompt()
     {
         Console.WriteLine("\nConsider the following prompt:");
-        Console.WriteLine("----------------------------");
+        Console.WriteLine();
         Console.WriteLine(GetRandomPrompt());
-        Console.WriteLine("----------------------------");
+        Console.WriteLine();
         Console.WriteLine("\nWhen you have something in mind, press enter to continue.");
         Console.ReadLine();
-        Console.WriteLine("\nNow ponder on each of the following questions as they related to this experience.");
+        Console.WriteLine("\nNow ponder on each of the following questions as they relate to this experience.");
         Console.Write("You may begin in: ");
         ShowCountDown(5);
         Console.WriteLine();
     }
 
-    private void DisplayQuestions()
+    private void DisplayQuestions(DateTime endTime)
     {
-        DateTime endTime = DateTime.Now.AddSeconds(GetDuration());
-
         while (DateTime.Now < endTime)
         {
             Console.Write($"\n> {GetRandomQuestion()} ");
             ShowSpinner(5);
         }
     }
+
     public void Run()
     {
         DisplayStartingMessage();
+        DateTime endTime = DateTime.Now.AddSeconds(GetDuration());
         DisplayPrompt();
-        DisplayQuestions();
+        DisplayQuestions(endTime);
         DisplayEndingMessage();
     }
 }
