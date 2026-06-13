@@ -24,7 +24,7 @@ class Program
         Console.WriteLine($"Welcome {name}!");
 
         Console.WriteLine("This program is designed to help you get to know yourself better.");
-        Console.WriteLine($"Have a good trip!");
+        Console.WriteLine("Have a good trip!");
 
         Journal journal = new Journal();
         PromptGenerator promptGenerator = new PromptGenerator();
